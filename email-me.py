@@ -1,9 +1,10 @@
 import smtplib, ssl, getpass, twitter, json
+import config
 
-my_api = twitter.Api(consumer_key='mgwDK6fgRv8V6J1ZFErk2fUI4',
-                    consumer_secret='PMBJKxBWzmcjVYzkPAw1YnAZh9ExtxsSrft7ZR7vJndGg8ofaS',
-                    access_token_key='1012650702-pDmAe9xJMeL2NgDcPf2kHLSzrUbtOxVWTxNtsgu',
-                    access_token_secret='3XVTWPseYPkvzWhFUH9NWM8x6I7ygYlwehXz3aUIJLxyp')
+my_api = twitter.Api(config.consumer_key,
+                    config.consumer_secret,
+                    config.access_token_key,
+                    config.access_token_secret)
 
 id_file = open("last_id.txt", 'r')
 last_id = id_file.read()
@@ -28,7 +29,7 @@ id_file.close()
 if len(email) != 0:
     password = getpass.getpass("pw: ")
     server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-    server.login("samprattdev@gmail.com", password)
-    server.sendmail("samprattdev@gmail.com", "sampratt6@gmail.com", email)
+    server.login(config.sending_email, password)
+    server.sendmail(config.sending_email, config.receiving_email, email)
 else:
     print("no new tweets")
