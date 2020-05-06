@@ -6,7 +6,7 @@ It's a bit rough, and you need a couple of things to make it work.
 In a config.py file in the same directory, you need:
 - the API keys from a Twitter dev account (I have mine stored privately)
 - the email you're sending from
-- the email you're sending too
+- the email you're sending to
 
 It also creates a file called last_id.txt that stores the id of the most recent Tweet when running the script, so next time it will pick up where it left off. 
 
